@@ -1,0 +1,86 @@
+import random
+print("Welcome to Hangman Game")
+print("""               _                            _          _    _                                         
+              | |                          | |        | |  | |                                        
+ __      _____| | ___ ___  _ __ ___   ___  | |_ ___   | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __  
+ \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \  |  __  |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+  \ V  V /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |  | | (_| | | | | (_| | | | | | | (_| | | | |
+   \_/\_/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/  |_|  |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                                                                           __/ |                      
+                                                                          |___/       """)
+pic = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
+print(len(pic))
+print("Guess the Animal Name")
+name = ["dog", "cat", "rat", "ape", "squirrel", "lion", "monkey", "kangaroo", "elephant", "tiger", "snake", "bear",
+        "deer", "cow", "peacock", "gorilla", "donkey", "kangaroo", "rabbit", "guineapig", "fox", "sheep", "leopard",
+        "jaguar", "jackal", "orangutan", "panda", "lamb", "honeybadger", "zebra", "hippopotammus", "rhino"]
+com = random.choice(name).lower()
+empty = []
+for _ in range(len(com)):
+    empty.append("_")
+print(empty)
+live = 7
+alive = 0
+while "_" in empty:
+    guess = input("Guess the alphabet")
+    if guess in com:
+        for i in range(len(com)):
+            if com[i] == guess:
+                empty[i] = guess
+                print(empty)
+    else:
+        live -= 1
+        print(pic[alive])
+        print(f"Remaining Lives {live}")
+        alive += 1
+    if live == 0:
+        exit()
