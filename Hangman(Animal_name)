@@ -1,4 +1,5 @@
 import random
+
 print("Welcome to Hangman Game")
 print("""               _                            _          _    _                                         
               | |                          | |        | |  | |                                        
@@ -59,9 +60,10 @@ pic = ['''
       |
 =========''']
 print(len(pic))
-print("Guess the Animal Name")
-name = ["dog", "cat", "rat", "ape", "squirrel", "lion", "monkey", "kangaroo", "elephant", "tiger", "snake", "bear",
-        "deer", "cow", "peacock", "gorilla", "donkey", "kangaroo", "rabbit", "guineapig", "fox", "sheep", "leopard",
+name = ["dog", "cat", "rat", "ape", "squirrel", "lion", "crocodile", "dolphin", "whale", "shark", "monkey", "kangaroo",
+        "elephant", "tiger", "snake", "bear", "ostrich", "cheetah", "sparrow", "eagle", "crow", "sparrow",
+                                                                                                "deer", "cow",
+        "peacock", "gorilla", "donkey", "kangaroo", "rabbit", "guineapig", "fox", "sheep", "leopard",
         "jaguar", "jackal", "orangutan", "panda", "lamb", "honeybadger", "zebra", "hippopotammus", "rhino"]
 com = random.choice(name).lower()
 empty = []
@@ -82,5 +84,10 @@ while "_" in empty:
         print(pic[alive])
         print(f"Remaining Lives {live}")
         alive += 1
+        print(empty)
     if live == 0:
         exit()
+if live > 0 and "_" not in empty:
+    print("Congratulations! You guessed it Correctly.")
+else:
+    print("Sorry Dear! Try next Time")
